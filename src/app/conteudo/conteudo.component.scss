@@ -1,0 +1,27 @@
+@import 'src/styles.scss';
+
+section{
+    display: flex;
+    height: 78vh;
+    width: 100%;
+    border: 2px solid;
+    border-color: $borda-padrao;
+    margin-top: 15px;
+    color: white;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.802), rgba(0, 0, 0, 0.58));
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+section::-webkit-scrollbar {
+    width: auto;
+    height: 5px;
+    background-color: transparent;
+}
+
+section::-webkit-scrollbar-thumb {
+    width: 1px;
+    height: 10px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.58), rgba(0, 67, 114, 0.802));
+}
+

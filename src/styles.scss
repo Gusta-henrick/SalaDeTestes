@@ -1,1 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
+$fundo-padrao: rgba(255, 255, 255, 0.372);
+$borda-padrao: rgba(255, 255, 255, 0.3);
+$imagem-fundo: url("/assets/background.jpg");
+
+body{
+    height: auto;
+    background-image: $imagem-fundo;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.htmlCode{
+    color: pink;
+}
+
+.javascriptCode{
+    color: rgba($color: #00e970, $alpha: 1.0);
+    padding: 5px;
+    margin: 10px;
+    height: auto;
+    display: inline-block;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* Importing Bootstrap SCSS file. */
+@import 'bootstrap/scss/bootstrap';

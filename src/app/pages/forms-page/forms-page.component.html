@@ -1,0 +1,26 @@
+<h1>Formulários em Angular</h1>
+<article>
+    <p> 
+        O Angular possui duas APIs para o desenvolvimento de formulários, podemos desenvolver formulários 
+        orientados a template (template-driven) ou formulários orientados a dados(driven-data) ou formulários
+        reativos
+    </p>
+    <p>
+        <b>Template Driven:</b>
+        As validações dos campos do formulário são feitas dentro do próprio template, no HTML. O Angular tem
+        diretivas para que verificações e validações sejam feitas no template. Mas no momento de enviar os dados
+        para o componente, o Angular cria um objeto do tipo FormGroup através dos dados enviados.
+        <br>
+        <b>Data Driven:</b>
+        As validações dos campos são feitas no componente, os campos do formulário referenciam o objeto FormGroup
+        diretamente, sem a necessidade de enviar todos os dados de uma vez ao componente por elas serem passadas
+        de maneira automática.
+    </p>
+    <p>
+        Em geral é preferível que desenvolvamos formulários Data-Driven, isso porque os formulário template-driven
+        são para situações mais específicas para se atingir um resultado mais rápido. A complexidade aumenta muito
+        se o formulário tiver que ser escalável. Além de que através de suas diretivas, um formulário de Template
+        nada mais faz do que abstrair um formulário Data-Driven por trás dos panos.
+    </p>
+    
+</article>

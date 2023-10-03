@@ -1,0 +1,40 @@
+@import 'src/styles.scss';
+
+h1{
+    margin: 0;
+    color: white;
+    font-size:large;
+    padding: 10px;
+}
+
+p{
+    margin: 0;
+    color: #ffffff;
+    font-size:medium;
+    font-weight: 100;
+    padding: 10px;
+}
+
+section{
+    padding: 10px;
+    float: left;
+    width: 50%;
+    background-color: black;
+}
+
+aside{
+    float: right;
+    width: 50%;
+}
+
+label{
+    font-size: medium;
+}
+
+button{
+    margin-top: 20px;
+}
+
+.alert-danger{
+    margin-top: 2px;
+}

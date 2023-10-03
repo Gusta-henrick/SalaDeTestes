@@ -1,0 +1,105 @@
+<h1>Uso de Observables:</h1>
+<article>
+    <p>Observables são objetos pertencentes à biblioteca RxJs, que é 
+        instalada ao criar um novo projeto em Angular. São objetos semelhantes
+        à promises, com a diferença de que podemos utiliza-los para o recebimento
+        contínuo de dados. Enquanto que Promises apesar de poderem ser chamadas
+        várias vezes são "resolvidas" apenas uma vez. Os métodos de resolução ou
+        falha de um Observables podem ser chamados várias vezes com diferentes entradas
+        e diferentes retornos.
+    </p>
+    <p>
+        São úteis principalmente como retorno de serviço. No exemplo abaixo criamos o serviço PokemonService
+        que possui como retorno um Observable &lt; PokemonModel &gt;
+    </p>
+    <section>
+        <pre class="javascriptCode">
+            
+            export class PokemonModel &#123;
+                count: number;
+                next: string;
+                previous: any;
+                results: Array &lt;any&gt;
+            &#125;   
+        </pre>
+        <br>
+        <pre class="javascriptCode">
+            
+            export class PokemonService &#123;
+
+                constructor(private http: HttpClient) &#123;  &#125;
+              
+                public getPokemon(): Observable &lt;any&gt; &#123;
+                  return this.http.get &lt;PokemonModel&gt;(`https://pokeapi.co/api/v2/pokemon?limit=150`);
+                    &#125;
+                &#125;
+        </pre>
+        <br>
+        <pre class="javascriptCode">
+           
+            export class ObservablesPageComponent &#123;
+                public pokemons: PokemonModel;
+                public listaPokemons: Array&lt;any&gt;;
+                public erro: any;
+                constructor(public pokemonService: PokemonService)&#123;
+                  this.getter();
+                &#125;
+              
+                ngOnInit()&#123; &#125;
+              
+                public getter()&#123;
+                  this.pokemonService.getPokemon().subscribe(
+                    (data: PokemonModel) => &#123;
+                      this.pokemons = data;
+                      this.listaPokemons = this.pokemons.results;
+                      console.log(this.listaPokemons);
+                    &#125;, (error: any) => &#123;
+                      this.erro = error;
+                      console.warn(this.erro);
+                    &#125;);
+                &#125;
+        </pre>
+        <pre class="htmlCode">
+            &lt;p class="observablePokemon" &gt;
+                &lt;img *ngFor="let pokemon of listaPokemons" 
+                [src]="'https://projectpokemon.org/images/normal-sprite/'+pokemon.name+'.gif'"&gt;
+            &lt;/p&gt;        
+        </pre>
+    </section>
+    <aside>
+        <p>
+            Em seguida criamos um método chamado getter() em nosso component que receberá o objeto
+            do tipo Observable ao chamar o método getPokemon() do serviço PokemonService. E imediatamente
+            irá chamar o método .subscribe() desse serviço.
+        </p>
+        <p>
+            O método .subcribe() recebe dentro de si dois parâmetros, o primeiro representa o retorno
+            do subscribe, nesse caso chamamos ele de <i>data</i>. E o segundo parâmetro é uma arrow function
+            que é disparada no momento em que o subscribe é retornado com sucesso.
+        </p>
+        <p>
+            Nesse caso, o método disparado pelo sucesso do Observable insere o retorno dele dentro do objeto
+            <i>pokemons</i> que é do tipo <i>PokemonModel</i>. Esse objeto foi criado dentro da própria classe
+            para que pudéssemos mapear o valor retornado pelo Observable. Em seguida colocamos dentro do objetos
+            <i>pokemonLista</i> apenas o atributo 'results' do objeto retornado. 
+        </p>
+        <p> 
+            Determinamos também através da função (error: any) => &#123; &#125; o que será feito caso o Observable retorne
+            um erro, nesse caso colocamos o conteúdo do erro no objeto <i>erro</i> também declarado dentro da classe
+            e simplesmente exibimos esse erro no console.
+        </p>
+        <p> 
+            Por fim utilizamos uma property binding em nosso HTML somada a diretiva ngFor para percorrer o vetor
+            de resultados e para cada item nele exibir uma imagem cuja url é adaptada para cada item.
+            E o resultado final é a exibição das imagens de todos os 150 pokemons. Os nomes buscados pelo Service,
+            e as imagens com urls adaptadas:
+        </p>
+    </aside>
+    <p class="observablePokemon">
+        <img *ngFor="let pokemon of listaPokemons" 
+        [src]="'https://projectpokemon.org/images/normal-sprite/'+pokemon.name+'.gif'">
+    </p>
+   
+
+    
+</article>
