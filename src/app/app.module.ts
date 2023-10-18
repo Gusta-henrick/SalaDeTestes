@@ -3,8 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MenuComponent } from './shared/menu/menu.component';
-import { ButtonComponent } from './shared/menu/button/button.component';
 import { ConteudoComponent } from './conteudo/conteudo.component';
 import { ObservablesPageComponent } from './pages/observables-page/observables-page.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
@@ -14,18 +12,16 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatButtonModule} from '@angular/material/button';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SharedModule } from './shared/shared-module.module';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    MenuComponent,
-    ButtonComponent,
     ConteudoComponent,
     ObservablesPageComponent,
-    FormsPageComponent,
+    FormsPageComponent
   ],
   imports: [
     BrowserModule,
@@ -36,9 +32,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     MatSelectModule,
     MatInputModule,
     MatButtonModule,
-    FormsModule,
     NgbModule,
-    ReactiveFormsModule
+    SharedModule
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent]

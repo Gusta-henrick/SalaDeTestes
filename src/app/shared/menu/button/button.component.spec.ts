@@ -15,7 +15,7 @@ describe('ButtonComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('Botão deve ser criado', () => {
     expect(component).toBeTruthy();
   });
 });

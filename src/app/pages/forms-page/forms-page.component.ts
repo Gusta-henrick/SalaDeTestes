@@ -8,7 +8,6 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class FormsPageComponent {
   formUsuario: FormGroup;
-
   createForm(usuario: any){
     this.formUsuario = new FormGroup({
       nome: new FormControl(usuario.nome),

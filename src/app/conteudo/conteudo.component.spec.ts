@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ConteudoComponent } from './conteudo.component';
+import { AppRoutingModule } from '../app-routing.module';
 
 describe('ConteudoComponent', () => {
   let component: ConteudoComponent;
@@ -8,6 +9,7 @@ describe('ConteudoComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
+      imports: [AppRoutingModule],
       declarations: [ConteudoComponent]
     });
     fixture = TestBed.createComponent(ConteudoComponent);
@@ -15,7 +17,7 @@ describe('ConteudoComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('Container de conteúdo deve ser criado', () => {
     expect(component).toBeTruthy();
   });
 });

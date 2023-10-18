@@ -1,0 +1,57 @@
+<form (ngSubmit)="onSubmit()" [formGroup]="formData" #formDir="ngForm">
+    <h1>Data-Driven</h1>
+    <div class="row">
+        <div class="form-group col-md-6">
+            <label for="primeiroNome" class="form-label">Primeiro Nome:</label>
+            <input type="text" class="form-control" id="DTprimeiroNome" formControlName="primeiroNome">
+        </div>
+    
+        <div class="form-group col-md-6">
+            <label for="sobrenome" class="form-label">Sobrenome:</label>
+            <input type="text" class="form-control" id="DTsobrenome" formControlName="sobrenome">
+        </div>
+    </div>
+  
+    <div class="form-group">
+      <label for="email" class="form-label">E-mail:</label>
+      <input type="email" class="form-control" id="DTemail" formControlName="email">
+    </div>
+  
+    <div class="row">
+        <div class="form-group col-md-6">
+            <label for="senha" class="form-label">Senha:</label>
+            <input type="password" class="form-control" id="DTsenha" formControlName="senha">
+        </div>
+    
+        <div class="form-group col-md-6">
+           <label for="confirmarSenha" class="form-label">Confirmar Senha:</label>
+          <input type="password" class="form-control" id="DTconfirmarSenha" formControlName="confirmarSenha">
+        </div>
+    </div>
+  
+    <div class="form-group">
+      <label for="address" class="form-label">Endereço:</label>
+      <textarea class="form-control" id="DTaddress" formControlName="endereco"></textarea>
+    </div>
+  
+    <div class="form-group">
+      <label for="genero" class="form-label">Gênero:</label>
+      <select class="form-select" id="DTgenero" formControlName="genero">
+        <option value="masculino">Masculino</option>
+        <option value="feminino">Feminino</option>
+        <option value="outro">Outro</option>
+      </select>
+    </div>
+  
+    <button type="submit" [disabled]="!formDir.valid" class="btn btn-primary">Enviar</button>
+  </form>
+<app-modal *ngIf="modal.mostrar;">
+    <h1>Confirme as informações:</h1>
+    <h1>Nome: {{formData.value.primeiroNome}}</h1>
+    <h1>Sobrenome: {{formData.value.sobrenome}}</h1>
+    <h1>Email: {{formData.value.email}}</h1>
+    <h1>Endereço: {{formData.value.endereco}}</h1>
+    <h1>Gênero: {{formData.value.genero}}</h1>
+
+    <button class="btn btn-primary" (click)="modal.toggle();">Fechar</button>
+</app-modal>
